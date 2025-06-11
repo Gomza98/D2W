@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desire Media - Events & Media Services</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #111;
+      color: #fff;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #000;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+    }
+    header h1 {
+      font-size: 1.7rem;
+      color: #f72585;
+      font-weight: 700;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #f72585;
+    }
+    .hero {
+      background: linear-gradient(135deg, #f72585cc, #7209b7cc),
+                  url('https://images.unsplash.com/photo-1561488118-bd9873c524d8?auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      color: #f0f0f0;
+    }
+    .btn {
+      background: #f72585;
+      color: #fff;
+      padding: 0.8rem 2.2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #d61c73;
+    }
+    main {
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .card {
+      background: #1e1e1e;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .card h3 {
+      color: #f72585;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    form {
+      background: #1e1e1e;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+    }
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    form button {
+      background: #f72585;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #d61c73;
+    }
+    footer {
+      text-align: center;
+      background: #000;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Desire Media</h1>
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Book Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Capturing Your Moments with Magic</h2>
+    <p>From intimate events to large productions — we deliver unforgettable visuals, sound, and experience.</p>
+    <a href="#contact" class="btn">Book a Team</a>
+  </section>
+
+  <main>
+    <section id="services" class="services">
+      <div class="card">
+        <h3>Event Filming</h3>
+        <p>High-definition event coverage, interviews, and cinematic storytelling.</p>
+      </div>
+      <div class="card">
+        <h3>Photography</h3>
+        <p>Professional photoshoots, portraits, product photography, and more.</p>
+      </div>
+      <div class="card">
+        <h3>Sound & DJ Services</h3>
+        <p>Top-tier audio equipment and experienced DJs for all occasions.</p>
+      </div>
+      <div class="card">
+        <h3>Lighting & Stage</h3>
+        <p>Dynamic lighting setups and stage design for impactful atmospheres.</p>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+      <img src="https://images.unsplash.com/photo-1582095133179-2988c9af1d99?auto=format&fit=crop&w=500&q=80" alt="Event">
+      <img src="https://images.unsplash.com/photo-1521337581058-11b3217e4c6c?auto=format&fit=crop&w=500&q=80" alt="DJ">
+      <img src="https://images.unsplash.com/photo-1564518098559-0b7e369eecd1?auto=format&fit=crop&w=500&q=80" alt="Setup">
+    </section>
+
+    <section id="contact">
+      <form>
+        <h3 style="color:#f72585; margin-bottom:1rem;">Book Us for Your Next Event</h3>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Tell us about your event</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Send Request</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Desire Media. All rights reserved.
+  </footer>
+</body>
+</html>

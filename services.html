@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Desire2Win Consulting | Empower Your Business</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
+
+  /* Reset and base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f7ff;
+    color: #1a1a2e;
+    overflow-x: hidden;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Header/Nav */
+  header {
+    position: fixed;
+    width: 100%;
+    top: 0; left: 0;
+    background: rgba(255 255 255 / 0.95);
+    backdrop-filter: saturate(180%) blur(12px);
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(26, 26, 46, 0.1);
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+  .logo {
+    font-weight: 800;
+    font-size: 2rem;
+    letter-spacing: 4px;
+    color: #0077ff;
+    cursor: default;
+    user-select: none;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+  nav ul li {
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+  }
+  nav ul li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: #0077ff;
+    left: 0; bottom: -8px;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
+  nav ul li:hover::after,
+  nav ul li:focus-within::after {
+    width: 100%;
+  }
+  nav ul li a {
+    color: #1a1a2e;
+    transition: color 0.3s ease;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    color: #004bb5;
+  }
+  .btn-primary {
+    background: #0077ff;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px #0077ffaa;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background: #005fcc;
+    box-shadow: 0 0 30px #005fcccc;
+    outline: none;
+  }
+
+  /* Hero Section */
+  .hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 70px;
+    position: relative;
+    overflow: visible;
+    background: linear-gradient(135deg, #d0e8ff 0%, #a0cfff 60%, #0077ff 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+  .hero-content {
+    max-width: 600px;
+    margin-left: 2rem;
+    z-index: 10;
+  }
+  .hero-content h1 {
+    font-size: 3.8rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow:
+      2px 2px 6px rgba(0,0,0,0.3),
+      0 0 15px rgba(255,255,255,0.4);
+  }
+  .hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    color: #e0eaffdd;
+    font-weight: 600;
+    max-width: 480px;
+  }
+  .hero-content .btn-primary {
+    font-size: 1.3rem;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    box-shadow: 0 0 25px #004bb5cc;
+  }
+
+  /* Hero Visual - Abstract shapes & subtle animations */
+  .hero-visual {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  .shape-big {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle at center, #004bb5, #0077ff);
+    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
+    filter: drop-shadow(0 0 20px #0077ffaa);
+    animation: floatUpDown 6s ease-in-out infinite;
+    mix-blend-mode: screen;
+    margin-right: 3rem;
+  }
+  .shape-small {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, #00aaffcc, #004bb5cc);
+    border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+    filter: drop-shadow(0 0 15px #00aaffbb);
+    animation: floatUpDown 5s ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+  }
+  @keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-25px); }
+  }
+
+  /* Expanded Services Section */
+  .services-expanded {
+    background: #fff;
+    padding: 6rem 2rem 8rem;
+    border-radius: 80px 80px 0 0;
+    margin-top: -80px;
+    box-shadow: 0 -20px 60px rgba(0, 119, 255, 0.15);
+    color: #1a1a2e;
+  }
+  .services-expanded h2 {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    color: #0077ff;
+    letter-spacing: 1.5px;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #e7f0ff;
+    border-radius: 30px;
+    padding: 2.5rem 2rem 3rem;
+    box-shadow: 0 10px 30px rgba(0, 119, 255, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 119, 255, 0.25);
+  }
+  .card h3 {
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: #004bb5;
+    letter-spacing: 0.5px;
+  }
+  .card ul {
+    list-style: none;
+    color: #004477;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+  .card ul li {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 1.1rem;
+  }
+  .card ul li::before {
+    content: '✓';
+    color: #0077ff;
+    position: absolute;
+    left: 0;
+    font-weight: 900;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  .price {
+    color: #0077ff;
+    font-weight: 700;
+    margin-left: 0.5rem;
+  }
+
+  /* Interactive Micro-Interaction Buttons */
+  .btn-secondary {
+    background: transparent;
+    border: 2px solid #0077ff;
+    color: #0077ff;
+    font-weight: 700;
+    padding: 0.7rem 2.5rem;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    box-shadow: 0 0 10px #0077ff55;
+    margin-top: 2rem;
+    display: inline-block;
+  }
+  .btn-secondary:hover,
+  .btn-secondary:focus {
+    background: #0077ff;
+    color: #fff;
+    box-shadow: 0 0 25px #0077ffcc;
+    outline: none;
+  }
+
+  /* Interactive Info Section with Icons */
+  .info-section {
+    max-width: 900px;
+    margin: 6rem auto 8rem;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  .info-section h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    color: #0077ff;
+  }
+  .info-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+  }
+  .info-card {
+    background: #e7f0ff;
+    border-radius: 25px;
+    padding: 2rem;
+    flex: 1 1 280px;
+    box-shadow: 0 10px 25px rgba(0, 119, 255, 0.1);
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  .info-card:hover,
+  .info-card:focus-within {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 119, 255, 0.2);
+  }
+  .info-icon {
+    font-size: 3rem;
+    color: #0077ff;
+    margin-bottom: 1rem;
+  }
+  .info-card h3 {
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: #004bb5;
+  }
+  .info-card p {
+    font-size: 1.1rem;
+    color: #004477cc;
+    line-height: 1.5;
+  }
+
+  /* Footer CTA */
+  .footer-cta {
+    background: #0077ff;
+    color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 0 0 80px 80px;
+    box-shadow: 0 -10px 40px #005fccaa;
+  }
+  .footer-cta h2 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    letter-spacing: 1.5px;
+  }
+  .footer-cta p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .footer-cta .btn-primary {
+    font-size: 1.3rem;
+    padding: 1.2rem 4rem;
+    border-radius: 50px;
+    box-shadow: 0 0 35px #004bb5cc;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero-content {
+      margin-left: 1rem;
+      max-width: 90vw;
+    }
+    .hero-visual {
+      width: 60vw;
+    }
+    .cards {
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    }
+    .info-cards {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .hero-content h1 {
+      font-size: 2.8rem;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      max-width: 100%;
+    }
+    .hero-visual {
+      display: none;
+    }
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+   /* Sub-businesses Section */
+  .sub-businesses-section {
+    background: linear-gradient(135deg, #0077ff, #004bb5);
+    padding: 6rem 2rem;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .sub-businesses-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    background-size: 50px 50px;
+    animation: backgroundMove 20s linear infinite;
+  }
+  
+  @keyframes backgroundMove {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(50px) translateY(50px); }
+  }
+  
+  .sub-businesses-section h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .sub-businesses-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .sub-business {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .sub-business::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  .sub-business:hover::before {
+    left: 100%;
+  }
+  
+  .sub-business:hover,
+  .sub-business:focus {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  
+   .site-footer {
+  background: linear-gradient(90deg, #0077ff 0%, #00d2ff 100%);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  padding: 3rem 1rem 1.5rem;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 -4px 20px rgba(0, 119, 255, 0.2);
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+}
+
+.footer-about h3 {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.footer-about p {
+  max-width: 320px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: #d0eaff;
+}
+
+.footer-links h3,
+.footer-contact h3 {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #cce6ff;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin-bottom: 0.7rem;
+}
+
+.footer-links ul li a {
+  color: #e0f0ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover,
+.footer-links ul li a:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-contact p {
+  margin-bottom: 0.6rem;
+  font-weight: 400;
+  color: #d0eaff;
+}
+
+.footer-contact a {
+  color: #e0f0ff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover,
+.footer-contact a:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #cce6ff;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  .footer-about p {
+    max-width: 100%;
+    text-align: center;
+  }
+  .footer-links ul,
+  .footer-contact p {
+    text-align: center;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container" aria-label="Primary navigation">
+    <div class="logo" aria-label="Desire2Win Consulting logo">D2WC</div>
+    <ul role="menubar">
+		<li role="none"><a role="menuitem" href="index.html">Home</a></li>
+      <li role="none"><a role="menuitem" href="services.html">Services</a></li>
+      <li role="none"><a role="menuitem" href="why.html">Why D2WC?</a></li>
+      <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
+    </ul>
+   
+  </nav>
+</header>
+<br>
+<br>
+<br>
+<section id="services" class="services-expanded" aria-labelledby="services-title">
+  <h2 id="services-title">Our Core Services</h2>
+  <div class="cards">
+    <article class="card" tabindex="0" aria-label="Business Consulting services">
+      <h3>Business Consulting</h3>
+      <ul>
+        <li>Company Registration (PTY LTD, NPO, PBO) <span class="price">from R650</span></li>
+        <li>Pay As You Earn, FIOR, Payslips</li>
+        <li>Book Publication <span class="price">from R650</span></li>
+      </ul>
+	  <button class="btn-secondary"   href="contact.html">Request a Detailed Quote</button>
+    </article>
+	
+    <article class="card" tabindex="0" aria-label="Business Plans services">
+      <h3>Business Plans</h3>
+      <ul>
+        <li>3-Year Sales Projections</li>
+        <li>Comprehensive Business Plans</li>
+        <li>Agriculture, Construction, Projects & more <span class="price">from R3500</span></li>
+      </ul>
+	  <button class="btn-secondary"   href="contact.html">Request a Detailed Quote</button>
+    </article>
+	
+    <article class="card" tabindex="0" aria-label="Marketing and Branding services">
+      <h3>Marketing & Branding</h3>
+      <ul>
+        <li>Logo Design</li>
+        <li>Company Profile</li>
+        <li>Website Development</li>
+        <li>Video Marketing</li>
+        <li>Social Media Management</li>
+        <li>Newsletter Campaigns</li>
+      </ul>
+	  <button class="btn-secondary"   href="contact.html">Request a Detailed Quote</button>
+    </article>
+	
+    <article class="card" tabindex="0" aria-label="Training services">
+      <h3>Training Services</h3>
+      <ul>
+        <li>Business Coaching <span class="price">from R500pm</span></li>
+        <li>Leadership Training <span class="price">from R500pp</span></li>
+      </ul>
+	  <button class="btn-secondary"  href="contact.html">Request a Detailed Quote</button>
+    </article>
+  </div>
+	
+</section>
+
+<section id="sub-businesses" class="sub-businesses-section" aria-labelledby="sub-businesses-title">
+  <h2 id="sub-businesses-title">Explore Our Other Ventures</h2>
+  <div class="sub-businesses-list" role="list">
+	 <div class="sub-business" role="listitem" tabindex="0" aria-label="Link to Desire2Win Training Academy">
+      <strong>African Business Compliance Consulting(ABCC)</strong>
+	  <p><i>Business & Non-Profit Compliance</i></p>
+	  <br>
+	  <br>
+	  <a href="ABCC.html">Click to Explore</a>
+    </div>
+	
+    <div class="sub-business" role="listitem" tabindex="0" aria-label="Link to Desire2Win Digital Marketing">
+      <strong>Desire Media</strong>
+	  <p><i>events & media services</i></p>
+	  <br>
+	  <br>
+	  <a href="desire media.html">Click to Explore</a>
+    </div>
+	
+	 <div class="sub-business" role="listitem" tabindex="0" aria-label="Link to Desire2Win Training Academy">
+      <strong>World Class Screening Services(WCSS)</strong>
+	  <p><i>Criminal & Verification checks</i></p>
+	  <br>
+	  <br>
+	  <a href="WCSS.html">Click to Explore</a>
+    </div>
+	
+    <div class="sub-business" role="listitem" tabindex="0" aria-label="Link to Desire2Win Training Academy">
+      <strong>Desire Water</strong>
+	  <p><i>Premium purified water</i></p>
+	  <br>
+	  <br>
+	  <a href="desire water.html">Click to Explore</a>
+    </div>
+	
+    <div class="sub-business" role="listitem" tabindex="0" aria-label="Link to Desire2Win Publishing">
+      <strong>Desire Protein</strong>
+	  <p><i>Quality Meats for Healthy Living</i> </p>
+	  <br>
+	  <br>
+	  <a href="desire protein.html">Click to Explore</a>
+    </div>
+	
+    <div class="sub-business" role="listitem" tabindex="0" aria-label="Link to Desire2Win Events & Workshops">
+      <strong>John Jansen Clothing(JJC)</strong>
+	  <p><i>Uniforms, Corporate Gifts and Branding</i></p>
+	  <br>
+	  <br>
+	  <a href="jjc.html">Click to Explore</a>
+    </div>
+  </div>
+  
+  <p style="margin-top: 2rem; font-style: italic; font-weight: 400; opacity: 0.9; position: relative; z-index: 1;">Click any venture above to learn more and get specialized support.</p>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-about">
+      <h3>Desire2Win Consulting</h3>
+      <p>Your trusted partner for innovative consulting solutions. Empowering your business to win with desire and strategy.</p>
+    </div>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="why.html">Why D2WC?</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h3>Contact Us</h3>
+      <p><strong>Phone:</strong> +27 63 620 7366</p>
+      <p><strong>Email:</strong> <a href="mailto:info@d2wc.co.za">info@d2wc.co.za</a></p>
+      <p><strong>Address:</strong> 51 Kruger Street, Bronkhorstspruit, Pretoria, South Africa</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Desire2Win Consulting. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
