@@ -59,6 +59,8 @@
     list-style: none;
     display: flex;
     gap: 2.5rem;
+	justify-content: space-between;
+	align-items: center;
   }
   nav ul li {
     font-weight: 600;
@@ -105,81 +107,32 @@
     outline: none;
   }
 
-  /* Hero Section */
-  .hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 70px;
-    position: relative;
-    overflow: visible;
-    background: linear-gradient(135deg, #d0e8ff 0%, #a0cfff 60%, #0077ff 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  /* Mobile Menu Toggle */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
   }
-  .hero-content {
-    max-width: 600px;
-    margin-left: 2rem;
-    z-index: 10;
-  }
-  .hero-content h1 {
-    font-size: 3.8rem;
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-    color: #fff;
-    text-shadow:
-      2px 2px 6px rgba(0,0,0,0.3),
-      0 0 15px rgba(255,255,255,0.4);
-  }
-  .hero-content p {
-    font-size: 1.4rem;
-    margin-bottom: 2.5rem;
-    color: #e0eaffdd;
-    font-weight: 600;
-    max-width: 480px;
-  }
-  .hero-content .btn-primary {
-    font-size: 1.3rem;
-    padding: 1rem 3rem;
-    border-radius: 50px;
-    box-shadow: 0 0 25px #004bb5cc;
+  .menu-toggle span {
+    height: 4px;
+    background: #0077ff;
+    border-radius: 2px;
+    transition: 0.3s;
   }
 
-  /* Hero Visual - Abstract shapes & subtle animations */
-  .hero-visual {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 50vw;
-    height: 100vh;
-    pointer-events: none;
-    overflow: visible;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+  /* Mobile Menu Animation */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
   }
-  .shape-big {
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle at center, #004bb5, #0077ff);
-    border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
-    filter: drop-shadow(0 0 20px #0077ffaa);
-    animation: floatUpDown 6s ease-in-out infinite;
-    mix-blend-mode: screen;
-    margin-right: 3rem;
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
   }
-  .shape-small {
-    width: 180px;
-    height: 180px;
-    background: linear-gradient(135deg, #00aaffcc, #004bb5cc);
-    border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
-    filter: drop-shadow(0 0 15px #00aaffbb);
-    animation: floatUpDown 5s ease-in-out infinite alternate;
-    mix-blend-mode: screen;
-  }
-  @keyframes floatUpDown {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-25px); }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
   }
 
   /* Expanded Services Section */
@@ -356,37 +309,40 @@
   }
 
   /* Responsive */
-  @media (max-width: 1024px) {
-    .hero-content {
-      margin-left: 1rem;
-      max-width: 90vw;
+ @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
     }
-    .hero-visual {
-      width: 60vw;
-    }
-    .cards {
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    }
-    .info-cards {
+    nav ul {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: white;
       flex-direction: column;
-      gap: 2rem;
+      align-items: center;
+      max-height: 0;
+      overflow: hidden;
+      gap: 1.5rem;
+      padding: 0;
+      transition: max-height 0.4s ease-in-out;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    nav ul.open {
+      max-height: 400px;
+      padding: 2rem 0;
+    }
+    .about-section {
+      padding: 4rem 1rem 6rem;
+    }
+    .about-section h2 {
+      font-size: 2.4rem;
+    }
+    .about-section p {
+      font-size: 1rem;
     }
   }
-  @media (max-width: 600px) {
-    .hero-content h1 {
-      font-size: 2.8rem;
-    }
-    .hero-content p {
-      font-size: 1.1rem;
-      max-width: 100%;
-    }
-    .hero-visual {
-      display: none;
-    }
-    .cards {
-      grid-template-columns: 1fr;
-    }
-  }
+
   
    .site-footer {
   background: linear-gradient(90deg, #0077ff 0%, #00d2ff 100%);
@@ -504,13 +460,18 @@
 <header>
   <nav class="container" aria-label="Primary navigation">
     <div class="logo" aria-label="Desire2Win Consulting logo">D2WC</div>
-    <ul role="menubar">
-	<li role="none"><a role="menuitem" href="index.html">Home</a></li>
+	
+	<div class="menu-toggle" id="menuToggle">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+    <ul id="navMenu" role="menubar">
+      <li role="none"><a role="menuitem" href="index.html">Home</a></li>
       <li role="none"><a role="menuitem" href="services.html">Services</a></li>
       <li role="none"><a role="menuitem" href="why.html">Why D2WC?</a></li>
       <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
     </ul>
-   
   </nav>
 </header>
 <br>
@@ -583,5 +544,52 @@
     <p>© 2025 Desire2Win Consulting. All rights reserved.</p>
   </div>
 </footer>
+<script>
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Mobile menu toggle functionality
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+    menuToggle.classList.toggle('active');
+  });
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      menuToggle.classList.remove('active');
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('open');
+      menuToggle.classList.remove('active');
+    }
+  });
+
+  // Button click handlers
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (btn.tagName === 'BUTTON') {
+        e.preventDefault();
+        btn.style.transform = 'scale(0.95)';
+        setTimeout(() => btn.style.transform = 'scale(1)', 150);
+        alert('Thanks for your interest! We will reach out to you shortly.');
+      }
+    });
+  });
+</script>
 </body>
 </html>
