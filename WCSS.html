@@ -87,7 +87,7 @@
   }
 
   /* Short-form video scroller */
-  .video-scroll {
+  .img {
     margin: 3rem auto 5rem;
     max-width: 900px;
     display: flex;
@@ -96,7 +96,7 @@
     padding-bottom: 1rem;
     scroll-snap-type: x mandatory;
   }
-  .video-scroll video {
+  .img img {
     width: 280px;
     border-radius: 16px;
     box-shadow: 0 6px 20px rgba(59,130,246,0.4);
@@ -104,7 +104,7 @@
     cursor: pointer;
     transition: transform 0.3s ease;
   }
-  .video-scroll video:hover, .video-scroll video:focus {
+  .img img:hover, .img-scroll img:focus {
     transform: scale(1.05);
     outline: none;
   }
@@ -252,10 +252,10 @@
   <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Scroll to contact form">Request a Screening</button>
 </header>
 
-<div class="video-scroll" aria-label="Screening process short videos">
-  <video muted loop playsinline tabindex="0" aria-label="Background check process video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"></video>
-  <video muted loop playsinline tabindex="0" aria-label="Verification check video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/bee.webm"></video>
-  <video muted loop playsinline tabindex="0" aria-label="Secure screening video" src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/sea-turtle.webm"></video>
+<div class="img" aria-label="Screening process images">
+<img src="images/screen.jpg" alt ="screening images">
+  <img src="images/screen1.jpg" alt ="screening images">
+  <img src="images/screen2.jpg" alt ="screening images">
 </div>
 
 <main>
